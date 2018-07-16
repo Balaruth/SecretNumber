@@ -1,18 +1,23 @@
 import random
 
-secret = random.randint(1, 50)
-guess = 0
+def main():
+  secret = random.randint(1, 50)
 
-while guess != secret:
+  while True:
+    try:
+      guess = int(raw_input("Guess a number between 1 and 50 (type 0 to give up):"))
 
-  guess = int(raw_input("Guess a number between 1 and 50 (type 0 to give up):"))
-  if guess > 0:
-    if guess < secret:
-      print "Too bad, that's not the secret number! Try a higher number..."
-    elif guess > secret:
-      print "Too bad, that's not the secret number! Try a lower number..."
-  else:
-    print "That's a shame... Try again another time!"
-    break
-else:
-  print "Congratulations! You guessed the secret number!"
+      if guess == secret:
+        print "Congratulations, " + str(guess) + " is the secret number!"
+        break
+      elif guess == 0:
+        print "That's a shame... Try again another time!"
+        break
+      elif guess < secret:
+        print "Too bad, that's not the secret number! Try a higher number..."
+      elif guess > secret:
+        print "Too bad, that's not the secret number! Try a lower number..."
+    except:
+      print "Please enter a whole number to play!"
+
+main()
